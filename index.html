@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="p:domain_verify" content="4902bbf45fe4f81bed1552b65912c3f5">
 <title>AAROK — Carte de visite</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<!-- Apercu de partage : sans ces balises, un lien colle sur X, Discord ou
+     WhatsApp s'affiche en texte nu. On y met le PNG et non le WebP, que
+     plusieurs robots sociaux ne savent toujours pas lire. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AAROK — tous mes liens">
+<meta property="og:description" content="Gaming, Tech et Stream. Tous mes reseaux en un seul endroit.">
+<meta property="og:image" content="https://k413mp3r4.github.io/aarok-card/logo.png">
+<meta property="og:url" content="https://k413mp3r4.github.io/aarok-card/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AAROK — tous mes liens">
+<meta name="twitter:image" content="https://k413mp3r4.github.io/aarok-card/logo.png">
 <meta name="description" content="Carte de visite interactive AAROK. Accédez à tous mes liens en un seul endroit — YouTube, TikTok, Twitch, TryHackMe et plus.">
 <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
@@ -19,11 +32,29 @@
     --bg-mid:#1a0936;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%;overflow-x:hidden}
+  /* FOND QUI TIENT SUR TOUTE LA PAGE — correctif du 21/08/2026.
+     Avant : html et body etaient figes a height:100%, donc a la hauteur de
+     l'ecran. Le degrade ne se peignait que sur cette zone, et tout ce qui
+     depassait tombait sur du BLANC. Le defaut ne se voyait pas tant que la
+     liste tenait dans un ecran ; en passant de 10 a 13 liens, la moitie basse
+     de la page est devenue blanche.
+     Trois garde-fous cumules :
+       - html porte une couleur de fond opaque : plus rien ne peut etre blanc,
+         quoi qu'il arrive ensuite ;
+       - body abandonne height:100% et ne garde que min-height:100vh, donc il
+         grandit avec le contenu ;
+       - background-attachment:fixed ancre le degrade au cadre de vue : il
+         reste identique quelle que soit la longueur de la page, et le rendu
+         ne change pas quand tu ajouteras d'autres reseaux. */
+  html{background:#05010f}
+  html,body{overflow-x:hidden}
   body{
     font-family:'Orbitron',sans-serif;
     color:#fff;
-    background:radial-gradient(ellipse at top, #2a0a4a 0%, var(--bg-deep) 50%, #000 100%);
+    background-color:var(--bg-deep);
+    background-image:radial-gradient(ellipse at top, #2a0a4a 0%, var(--bg-deep) 50%, #000 100%);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
     min-height:100vh;
     position:relative;
   }
@@ -130,8 +161,14 @@
   @keyframes rotateGlow{
     to{transform:rotate(360deg)}
   }
-  .logo-svg{
+  .logo-img{
     width:100%;height:100%;
+    /* Le fichier est carre a bords noirs ; la marque, elle, est le disque
+       neon. On arrondit donc a 50 % pour que le halo tournant de .logo-wrap
+       epouse le contour du logo au lieu de deborder sur des coins noirs. */
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
     filter:drop-shadow(0 0 25px rgba(255,44,174,0.6));
   }
 
@@ -277,6 +314,18 @@
   .thm .icon{background:linear-gradient(135deg,#88cc14,#5a8a0c);border-color:#b8ff44}
   .thm:hover{border-color:#88cc14;box-shadow:0 10px 40px -5px rgba(136,204,20,0.6)}
 
+  .bsky .icon{background:linear-gradient(135deg,#0a7aff,#00b4ff);border-color:#7fd4ff}
+  .bsky:hover{border-color:#0a85ff;box-shadow:0 10px 40px -5px rgba(10,133,255,0.6)}
+
+  .mast .icon{background:linear-gradient(135deg,#6364FF,#563acc);border-color:#a3a4ff}
+  .mast:hover{border-color:#6364FF;box-shadow:0 10px 40px -5px rgba(99,100,255,0.6)}
+
+  .li .icon{background:linear-gradient(135deg,#0A66C2,#004182);border-color:#6cb3ff}
+  .li:hover{border-color:#0A66C2;box-shadow:0 10px 40px -5px rgba(10,102,194,0.6)}
+
+  .fb .icon{background:linear-gradient(135deg,#1877F2,#0b5fce);border-color:#7db2ff}
+  .fb:hover{border-color:#1877F2;box-shadow:0 10px 40px -5px rgba(24,119,242,0.6)}
+
   .pin .icon{background:linear-gradient(135deg,#e60023,#ad081b);border-color:#ff6b7d}
   .pin:hover{border-color:#e60023;box-shadow:0 10px 40px -5px rgba(230,0,35,0.6)}
 
@@ -330,90 +379,17 @@
 
   <!-- LOGO -->
   <div class="logo-wrap">
-    <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="bgGrad" cx="50%" cy="40%" r="70%">
-          <stop offset="0%" stop-color="#3a1a6a"/>
-          <stop offset="60%" stop-color="#1a0a3a"/>
-          <stop offset="100%" stop-color="#0a0420"/>
-        </radialGradient>
-        <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffcc00"/>
-          <stop offset="50%" stop-color="#ff6a00"/>
-          <stop offset="100%" stop-color="#ff007f"/>
-        </linearGradient>
-        <linearGradient id="textGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ff2cae"/>
-          <stop offset="100%" stop-color="#8a2be2"/>
-        </linearGradient>
-        <clipPath id="circleClip">
-          <circle cx="150" cy="150" r="140"/>
-        </clipPath>
-      </defs>
-
-      <!-- Cercle de fond -->
-      <circle cx="150" cy="150" r="140" fill="url(#bgGrad)" stroke="#ff2cae" stroke-width="2"/>
-
-      <g clip-path="url(#circleClip)">
-        <!-- Étoiles -->
-        <circle cx="60" cy="60" r="1.2" fill="#fff"/>
-        <circle cx="90" cy="40" r="0.8" fill="#fff"/>
-        <circle cx="220" cy="55" r="1" fill="#fff"/>
-        <circle cx="250" cy="80" r="1.5" fill="#fff"/>
-        <circle cx="40" cy="100" r="0.7" fill="#fff"/>
-        <circle cx="200" cy="35" r="1" fill="#fff"/>
-        <circle cx="160" cy="50" r="0.9" fill="#fff"/>
-        <circle cx="270" cy="120" r="0.8" fill="#fff"/>
-        <circle cx="30" cy="140" r="1" fill="#fff"/>
-
-        <!-- Soleil -->
-        <circle cx="150" cy="155" r="55" fill="url(#sunGrad)"/>
-        <!-- Bandes du soleil -->
-        <rect x="95" y="155" width="110" height="3" fill="#1a0a3a"/>
-        <rect x="95" y="165" width="110" height="4" fill="#1a0a3a"/>
-        <rect x="95" y="178" width="110" height="5" fill="#1a0a3a"/>
-        <rect x="95" y="193" width="110" height="6" fill="#1a0a3a"/>
-
-        <!-- Montagnes / triangles en wireframe -->
-        <g stroke="#00f0ff" stroke-width="1.2" fill="none" opacity="0.9">
-          <polyline points="0,230 50,200 90,225 130,195 170,220 210,190 250,215 300,200"/>
-          <polyline points="0,250 30,230 70,250 110,225 150,250 190,225 230,250 270,230 300,245"/>
-          <line x1="0" y1="230" x2="0" y2="300"/>
-          <line x1="50" y1="200" x2="50" y2="300"/>
-          <line x1="90" y1="225" x2="90" y2="300"/>
-          <line x1="130" y1="195" x2="130" y2="300"/>
-          <line x1="170" y1="220" x2="170" y2="300"/>
-          <line x1="210" y1="190" x2="210" y2="300"/>
-          <line x1="250" y1="215" x2="250" y2="300"/>
-        </g>
-
-        <!-- Grille rétro au sol -->
-        <g stroke="#ff2cae" stroke-width="0.8" fill="none" opacity="0.7">
-          <line x1="0" y1="260" x2="300" y2="260"/>
-          <line x1="0" y1="275" x2="300" y2="275"/>
-          <line x1="0" y1="290" x2="300" y2="290"/>
-          <line x1="150" y1="250" x2="20" y2="300"/>
-          <line x1="150" y1="250" x2="80" y2="300"/>
-          <line x1="150" y1="250" x2="120" y2="300"/>
-          <line x1="150" y1="250" x2="150" y2="300"/>
-          <line x1="150" y1="250" x2="180" y2="300"/>
-          <line x1="150" y1="250" x2="220" y2="300"/>
-          <line x1="150" y1="250" x2="280" y2="300"/>
-        </g>
-
-        <!-- AAROK Text -->
-        <text x="150" y="135" text-anchor="middle"
-              font-family="Audiowide, Orbitron, sans-serif"
-              font-size="46" font-weight="900"
-              fill="url(#textGrad)"
-              stroke="#00f0ff" stroke-width="1"
-              letter-spacing="2">AAROK</text>
-      </g>
-
-      <!-- Bordure -->
-      <circle cx="150" cy="150" r="140" fill="none" stroke="#ff2cae" stroke-width="3"/>
-      <circle cx="150" cy="150" r="143" fill="none" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
-    </svg>
+    <!-- LOGO AAROK — image reelle (21/08/2026).
+         Avant : une recreation SVG du logo, dessinee a la main. Elle ne
+         correspondait pas exactement a la marque utilisee partout ailleurs
+         (cartes, videos, avatars des reseaux). On met donc le vrai fichier.
+         logo.webp fait 45 Ko contre 306 Ko en PNG : sur une page ou le logo
+         est le premier element visible, c'est la difference entre un affichage
+         immediat et une seconde de vide sur mobile.
+         logo.png (108 Ko) reste dans le depot pour le favicon et les apercus
+         de partage : certains robots sociaux ne lisent pas le WebP. -->
+    <img class="logo-img" src="logo.webp" alt="Logo AAROK"
+         width="512" height="512" fetchpriority="high">
   </div>
 
   <div class="subtitle">// Gaming • Tech • Stream</div>
@@ -510,6 +486,46 @@
       <div class="link-text">
         <span class="platform">GTA5-Mods</span>
         <span class="handle">Aarok — Mes mods</span>
+      </div>
+    </a>
+
+    <a href="https://bsky.app/profile/aarok-g.bsky.social" target="_blank" rel="noopener" class="link-card bsky">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M12 10.8C10.9 8.6 7.9 4.5 5.1 2.6 2.4.8 1.4 1.1.8 1.4c-.7.4-.8 1.5-.8 2.1 0 .6.3 5.1.6 5.8.8 2.5 3.4 3.4 5.8 3.1-3.5.5-6.7 1.8-2.6 6.4 4.5 4.7 6.2-1 7.1-3.9.9 2.9 1.9 8.4 7 3.9 3.9-3.9.9-5.9-2.6-6.4 2.4.3 5-.6 5.8-3.1.3-.7.6-5.2.6-5.8 0-.6-.1-1.7-.8-2.1-.6-.3-1.6-.6-4.3 1.2C16.1 4.5 13.1 8.6 12 10.8z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="platform">Bluesky</span>
+        <span class="handle">@aarok-g.bsky.social</span>
+      </div>
+    </a>
+
+    <a href="https://mastodon.social/@Aarok" target="_blank" rel="noopener" class="link-card mast">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M21.3 8c0-4.2-2.7-5.4-2.7-5.4C17.2 2 14.8 1.8 12.3 1.8h-.06c-2.5 0-4.9.2-6.3.8 0 0-2.7 1.2-2.7 5.4 0 1 0 2.1.03 3.4.1 4.2.8 8.3 4.7 9.3 1.8.5 3.4.6 4.6.5 2.3-.1 3.5-.8 3.5-.8l-.08-1.7s-1.6.5-3.4.4c-1.8-.06-3.6-.2-3.9-2.4a4.4 4.4 0 0 1-.04-.6s1.7.4 3.9.5c1.3.06 2.6-.08 3.9-.2 2.6-.3 4.9-1.9 5.2-3.4.5-2.3.4-5.6.4-5.6zm-3.3 5.5h-2v-5c0-1-.4-1.6-1.3-1.6-1 0-1.5.6-1.5 1.9v2.7h-2V8.8c0-1.3-.5-1.9-1.5-1.9-.9 0-1.3.5-1.3 1.6v5h-2V8.3c0-1 .3-1.9.8-2.5.6-.6 1.3-.9 2.2-.9 1.1 0 1.9.4 2.4 1.2l.5.8.5-.8c.5-.8 1.3-1.2 2.4-1.2.9 0 1.6.3 2.2.9.5.6.8 1.4.8 2.5v5.2z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="platform">Mastodon</span>
+        <span class="handle">@Aarok@mastodon.social</span>
+      </div>
+    </a>
+
+    <a href="https://www.linkedin.com/in/aarok-8041b142a/" target="_blank" rel="noopener" class="link-card li">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="platform">LinkedIn</span>
+        <span class="handle">AAROK.G</span>
+      </div>
+    </a>
+
+    <a href="https://www.facebook.com/1137580309433019" target="_blank" rel="noopener" class="link-card fb">
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="platform">Facebook</span>
+        <span class="handle">Page AAROK</span>
       </div>
     </a>
 
