@@ -4,8 +4,7 @@
 
 Carte de visite interactive AAROK — Tous mes liens en un seul endroit.
       Carte de visite : https://aarokhub.github.io/aarok-card/
-🌐 **Accéder au site** : https://k413mp3r4.github.io/aarok-card/
-
+🌐 **Accéder au site** : https://aarokhub.github.io/AAROK/
 ---
 
 **Gaming • Tech • Stream**
@@ -14,7 +13,7 @@ Carte de visite interactive AAROK — Tous mes liens en un seul endroit.
 - 📱 TikTok: @aarok.tv
 - 🎬 Twitch: @aar0ck
 - 🛡️ TryHackMe: AAROK (CyberSécurité)
-- 🌐 Site officiel: https://k413mp3r4.github.io/AAROK/
+- 🌐 Site officiel: https://aarokhub.github.io/AAROK/
 
 ## Licence
 
