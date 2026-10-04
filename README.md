@@ -1,18 +1,20 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# AAROK Card
+# AVOK Card
 
-Carte de visite interactive AAROK — Tous mes liens en un seul endroit.
+Carte de visite interactive AVOK — Tous mes liens en un seul endroit.
       Carte de visite : https://aarokhub.github.io/aarok-card/
 🌐 **Accéder au site** : https://aarokhub.github.io/AAROK/
 ---
 
 **Gaming • Tech • Stream**
 
-- 🎮 YouTube: @aarok.gaming
-- 📱 TikTok: @aarok.tv
-- 🎬 Twitch: @aar0ck
-- 🛡️ TryHackMe: AAROK (CyberSécurité)
+- 🎮 YouTube: @AVOK.G
+- 📱 TikTok: @avok.g
+- 🎬 Twitch: @avoktv
+- 📸 Instagram: @avok.gg
+- ✖️ X: @avok.g
+- 🛡️ TryHackMe: AVOK (CyberSécurité)
 - 🌐 Site officiel: https://aarokhub.github.io/AAROK/
 
 ## Licence
